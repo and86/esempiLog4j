@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://andrea.alfasoft.it" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://andrea.alfasoft.it" xmlns:intf="http://andrea.alfasoft.it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://andrea.alfasoft.it" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="prendiTutteFatture">
+    <complexType/>
+   </element>
+   <element name="prendiTutteFattureResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="prendiTutteFattureReturn" type="impl:Fattura"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Fattura">
+    <sequence>
+     <element name="codiceCliente" nillable="true" type="xsd:string"/>
+     <element name="importo" type="xsd:double"/>
+     <element name="ragioneSociale" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="prendiFatturaConCodice">
+    <complexType>
+     <sequence>
+      <element name="codice" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="prendiFatturaConCodiceResponse">
+    <complexType>
+     <sequence>
+      <element name="prendiFatturaConCodiceReturn" type="impl:Fattura"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="prendiTutteFattureResponse">
+
+      <wsdl:part element="impl:prendiTutteFattureResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="prendiTutteFattureRequest">
+
+      <wsdl:part element="impl:prendiTutteFatture" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="prendiFatturaConCodiceRequest">
+
+      <wsdl:part element="impl:prendiFatturaConCodice" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="prendiFatturaConCodiceResponse">
+
+      <wsdl:part element="impl:prendiFatturaConCodiceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="FatturaService">
+
+      <wsdl:operation name="prendiTutteFatture">
+
+         <wsdl:input message="impl:prendiTutteFattureRequest" name="prendiTutteFattureRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:prendiTutteFattureResponse" name="prendiTutteFattureResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="prendiFatturaConCodice">
+
+         <wsdl:input message="impl:prendiFatturaConCodiceRequest" name="prendiFatturaConCodiceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:prendiFatturaConCodiceResponse" name="prendiFatturaConCodiceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="FatturaServiceSoapBinding" type="impl:FatturaService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="prendiTutteFatture">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="prendiTutteFattureRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="prendiTutteFattureResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="prendiFatturaConCodice">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="prendiFatturaConCodiceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="prendiFatturaConCodiceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="FatturaServiceService">
+
+      <wsdl:port binding="impl:FatturaServiceSoapBinding" name="FatturaService">
+
+         <wsdlsoap:address location="http://localhost:1234/EsempioFattureWeb/services/FatturaService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
